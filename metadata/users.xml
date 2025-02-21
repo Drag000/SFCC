@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns="http://www.demandware.com/xml/impex/user/2007-09-05">
+    <user login="d.k.dachev@abv.bg" enabled-flag="true">
+        <credentials>
+            <external-id>7d1b39b6-2421-495e-b957-41844fa9d824</external-id>
+        </credentials>
+        <profile>
+            <first-name>Dragomir</first-name>
+            <last-name>Dachev</last-name>
+            <email>d.k.dachev@abv.bg</email>
+        </profile>
+    </user>
+
+</users>
