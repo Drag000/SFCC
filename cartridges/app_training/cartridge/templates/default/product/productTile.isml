@@ -11,8 +11,8 @@
         <isset name="price" value="${product.price}" scope="page" />
         <isif condition="${product.productType === 'set'}">
             <isinclude template="product/components/pricing/setPrice" />
-            <iselse>
-                <isinclude template="product/components/pricing/main" />
+        <iselse>
+            <isinclude template="product/components/pricing/main" />
         </isif>
 
         <isif condition="${pdict.display.ratings !== false}">
@@ -21,7 +21,7 @@
         <div class="product-test-class">
             <isif condition="${!empty(pdict.discountPercentage)}">
                 <div class="discount-percentage">
-                    ${Resource.msgf('best.deal.label','common', null, pdict.discountPercentage)}
+                    ${Resource.msgf('best.deal.label','common', null, Math.floor(pdict.discountPercentage))}
                 </div>
             </isif>
         </div>
