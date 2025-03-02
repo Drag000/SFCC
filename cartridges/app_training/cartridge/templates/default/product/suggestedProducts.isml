@@ -1,0 +1,9 @@
+<isif condition="${pdict.productsInSameCategory && pdict.productsInSameCategory.length > 0}">
+    <div class="row-suggested-products product-grid">
+        <isloop items="${pdict.productsInSameCategory}" var="product">
+            <div class="col-6 col-sm-4">
+                <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.id, 'swatches', true, 'ratings', true)}" />
+            </div>
+        </isloop>
+    </div>
+</isif>
