@@ -85,11 +85,14 @@
             </div>
             <isinclude template="cart/cartRemoveProductModal"/>
         </div>
-
+        
+        <div> ${pdict.warninigMessage}</div>
+        
+        
         <isinclude template="cart/cartRemoveCouponModal"/>
     </isif>
     <div class="container">
         <isslot id="cart-recommendations-m" description="Recommended products" context="global" />
     </div>
-    ${pdict.myVariable}
+    <iscomment> ${pdict.myVariable} </iscomment>
 </isdecorate>
