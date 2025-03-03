@@ -5,10 +5,23 @@ var server = require('server');
 server.extend(module.superModule);
  
 server.append('Show', function (req, res, next) {
-    var viewData = res.getViewData();
-    viewData.example = "One string";
-
-    res.setViewData(viewData);
+    var BasketMgr = require('dw/order/BasketMgr');
+    var currentBasket = BasketMgr.getCurrentBasket();
+    
+    var cartTotal = currentBasket.totalGrossPrice.value;
+    
+    // var warninigMessage = '123'
+    // res.setViewData({warninigMessage:warninigMessage});
+    
+    
+    if (cartTotal > 200) {
+        var warninigMessage = 'Your cart exeeds $200!';
+        
+        
+        
+        res.setViewData({warninigMessage:warninigMessage});
+    }
+    
     return next();
 });
 
