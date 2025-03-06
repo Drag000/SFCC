@@ -1,0 +1,30 @@
+<body>
+    <p>
+        ${Resource.msg('email.msg.edited.dear', 'account', null)}
+        ${pdict.customerFirstName},
+    </p>
+    <p>
+        ${Resource.msg('body.order.confirmation.product.added.email', 'order', null)}
+    </p>
+    <p>
+        <img src="${pdict.productImageURL}" alt="${pdict.productName}" />
+    </p>
+    <p>
+        ${Resource.msg('label.order.product.name', 'confirmation', null)}:
+        <a href="${pdict.productURL}" target="_blank">
+            ${pdict.productName}
+        </a>
+    </p>
+    <p>
+        ${Resource.msg('label.order.product.description', 'confirmation', null)}:
+        ${pdict.productDescription}
+    </p>
+    <p>
+        ${Resource.msg('label.each.item.price', 'cart', null)} -
+        ${pdict.productCurrency} ${pdict.productPrice}
+    </p>
+    <p>
+        ${Resource.msg('label.quantity', 'common', null)} -
+        ${pdict.quantity}
+    </p>
+</body>
