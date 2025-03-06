@@ -1,0 +1,30 @@
+{
+    "createOrderCSV": {
+        "name": "Create Order CSV",
+        "description": "Generates a CSV file with all customer orders.",
+        "script": "/app_training/cartridge/scripts/jobs/createOrderCSV.js",
+        "parameters": [
+            {
+                "id": "filePath",
+                "type": "string",
+                "label": "File Path",
+                "description": "The path where the CSV file will be saved.",
+                "default": "/IMPEX/src/orders.csv",
+                "mandatory": true
+            },
+            {
+                "id": "orderStatus",
+                "type": "enum",
+                "label": "Order Status",
+                "description": "Filter orders by status.",
+                "options": [
+                    {"label": "All", "value": "all"},
+                    {"label": "Open", "value": "open"},
+                    {"label": "Completed", "value": "completed"}
+                ],
+                "default": "all",
+                "mandatory": false
+            }
+        ]
+    }
+}

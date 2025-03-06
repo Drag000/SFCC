@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job xmlns="http://www.demandware.com/xml/impex/job/2006-10-31">
+    <job-description>"Generates a CSV file with all customer orders.</job-description>
+    <job-name>ExportOrders</job-name>
+    <job-type>script</job-type>
+    <job-parameters>
+        <parameter>
+            <name>filePath</name>
+            <type>string</type>
+            <default-value>/IMPEX/src/orders.csv</default-value>
+        </parameter>
+            <name>orderStatus</name>
+            <type>enum</type>
+            <default-value>all</default-value>
+    </job-parameters>
+</job>
