@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job xmlns="http://www.demandware.com/xml/impex/job/2006-10-31">
+    <job-description>Assign products with a specific brand to a category</job-description>
+    <job-name>AssignProductsToCategory</job-name>
+    <job-type>script</job-type>
+    <job-parameters>
+        <parameter>
+            <name>brandName</name>
+            <type>string</type>
+            <default-value>YourBrandName</default-value>
+        </parameter>
+        <parameter>
+            <name>categoryID</name>
+            <type>string</type>
+            <default-value>YourCategoryID</default-value>
+        </parameter>
+    </job-parameters>
+</job>
