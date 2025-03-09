@@ -9,6 +9,19 @@ var xmlHelpers = require('*/cartridge/scripts/helpers/xmlHelpers');
 var XML_NAMESPACE = 'http://www.demandware.com/xml/impex/catalog/2006-10-31';
 var CATALOG_ID = 'storefront-catalog-m-en';
 
+/**
+* Executes the job to assign products to a specified category based on brand name.
+*
+* This function retrieves all site products and assigns those that are master products
+* and match the specified brand name to a given category. The assignments are written
+* to an XML file located at the specified path.
+*
+* @param {Object} args - The arguments object containing parameters for execution.
+* @param {string} args.brandName - The brand name used to filter products for assignment.
+* @param {string} args.categoryID - The ID of the category to which products will be assigned.
+* @throws {Error} Throws an error if the specified category is not found.
+* @returns {Status} - Returns a Status object indicating the success or failure of the operation.
+*/
 function execute(args) {
     var brandName = args.brandName;
     var categoryID = args.categoryID;
