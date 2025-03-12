@@ -72,7 +72,6 @@
                    <!--- Warninig message if total cart is more than cartTotalThreshold (default $200) --->
                     <isif condition="${pdict.warninigMessage}">
                         <div class="warning-message">${pdict.warninigMessage}</div>
-                        <div> ${pdict.cartTotal}</div>
                     </isif>
                 </div>
                 
@@ -96,16 +95,11 @@
             
             <isinclude template="cart/cartRemoveProductModal" />
         </div>
-        
-            
-
 
         <isinclude template="cart/cartRemoveCouponModal" />
     </isif>
     <div class="container">
         <isslot id="cart-recommendations-m" description="Recommended products" context="global" />
     </div>
-
-    
     
 </isdecorate>
