@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<job xmlns="http://www.demandware.com/xml/impex/job/2006-10-31">
-    <job-description>Assign products with a specific brand to a category</job-description>
-    <job-name>AssignProductsToCategory</job-name>
-    <job-type>script</job-type>
-    <job-parameters>
-        <parameter>
-            <name>brandName</name>
-            <type>string</type>
-            <default-value>YourBrandName</default-value>
-        </parameter>
-        <parameter>
-            <name>categoryID</name>
-            <type>string</type>
-            <default-value>YourCategoryID</default-value>
-        </parameter>
-    </job-parameters>
-</job>
+<jobs xmlns="http://www.demandware.com/xml/impex/jobs/2015-07-01">
+    <job job-id="AssignProductsToCategory">
+        <description>Assign products with a specific brand to a category</description>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="AssignProductsToCategory" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">app_training/cartridge/scripts/jobs/AssignProductsToCategory.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">execute</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="brandName">Pencil</parameter>
+                    <parameter name="categoryID">top-seller</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <flow>
+            <context site-id="Sites"/>
+            <step step-id="ImportAssignProducts" type="ImportCatalog" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="FileNamePattern">assignProducts.xml</parameter>
+                    <parameter name="NoFilesFoundHandling">NO_FILES_FOUND</parameter>
+                    <parameter name="ImportMode">Merge</parameter>
+                    <parameter name="ImportFailedHandling">WARN</parameter>
+                    <parameter name="AfterImportFileHandling">Archive</parameter>
+                    <parameter name="ArchiveFolder">archive</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <rules/>
+        <triggers>
+            <run-once enabled="false">
+                <date>2025-03-06Z</date>
+                <time>16:20:00.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+</jobs>
