@@ -1,0 +1,9 @@
+<body>
+    <p>${Resource.msg('label.newsletter.dear', 'newsletter', null)} ${pdict.firstName} ${pdict.lastName},</p>
+    <br>
+    <p>${Resource.msg('label.newsletter.thanks', 'newsletter', null)}</p>
+    <br>
+    <p>${Resource.msg('subscribe.email.message', 'newsletter', null)}</p>
+    <br>
+    <p>${Resource.msg('subscribe.email.message.coupon.code', 'newsletter', null)} ${pdict.couponCode}</p>
+</body>
