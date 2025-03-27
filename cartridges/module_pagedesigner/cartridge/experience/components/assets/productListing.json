@@ -1,0 +1,35 @@
+{
+    "name": "Product Lising",
+    "description": "List 4 producds based on category or product IDs. The category has highest priority.",
+    "group": "assets",
+    "attribute_definition_groups": [
+      {
+        "id": "productIDs",
+        "name": "List of Product IDs",
+        "description": "Specify up to 4 products IDs for lising the products. Separate the procucts by comma + space (', ') and do not put comma at the end. The category has highest priority.",
+        "attribute_definitions": [
+          {
+            "id": "productids",
+            "name": "Product IDs",
+            "type": "text",
+            "required": false
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "name": "Category",
+        "description": "Specify the category for lising the products.",
+        "attribute_definitions": [
+          {
+            "id": "category",
+            "name": "Category",
+            "type": "category",
+            "required": false
+          }
+        ]
+      }
+    ],
+    "region_definitions": []
+  }
+  

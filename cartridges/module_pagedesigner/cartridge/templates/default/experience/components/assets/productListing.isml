@@ -1,0 +1,12 @@
+<div class="col-sm-12 col-md-9">
+    <isif condition="${pdict.products && pdict.products.length > 0}">
+         <div class="row-products-listing product-grid">
+             <isloop items="${pdict.products}" var="product">
+                 <div class="col-6 col-sm-4">
+                     <isinclude url="${URLUtils.url('Tile-Show', 'pid', product, 'swatches', true, 'ratings', true)}" />
+                 </div>
+             </isloop>
+         </div>
+     </isif>
+ </div>
+ 
