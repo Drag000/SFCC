@@ -1,28 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <library xmlns="http://www.demandware.com/xml/impex/library/2006-10-31" library-id="RefArchSharedLibrary">
-    <content content-id="my-page-designer-page">
-        <display-name xml:lang="x-default">my-page-designer-page</display-name>
-        <type>page.dynamiclayout</type>
-        <config>{ "visibility" : [ ] }</config>
-        <visibility-mode xml:lang="x-default">visible</visibility-mode>
-        <data xml:lang="x-default">{ }</data>
-        <online-flag>false</online-flag>
-        <online-flag site-id="RefArch">true</online-flag>
-        <searchable-flag>false</searchable-flag>
-        <searchable-flag site-id="RefArch">false</searchable-flag>
-        <page-attributes/>
-        <content-links>
-            <content-link content-id="eb71328e21046ab9629db9c459" type="page.dynamiclayout.main">
-                <position>0.0</position>
-            </content-link>
-        </content-links>
-        <sitemap-included-flag site-id="RefArch">false</sitemap-included-flag>
-    </content>
-    <content content-id="eb71328e21046ab9629db9c459">
-        <type>component.assets.custombanner</type>
-        <config>{ "visibility" : [ ] }</config>
-        <data xml:lang="x-default">{ "image" : { "path" : "banner.jpg", "focal_point" : { "x" : 0.5, "y" : 0.5 }, "meta_data" : { "height" : 267, "width" : 800 } }, "category" : "electronics-televisions" }</data>
-        <online-flag>true</online-flag>
-        <online-flag site-id="RefArch">true</online-flag>
-        <page-attributes/>
-    </content>
+  <content content-id="my-page-designer-page">
+    <display-name xml:lang="x-default">my-page-designer-page</display-name>
+    <type>page.dynamiclayout</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <visibility-mode xml:lang="x-default">visible</visibility-mode>
+    <data xml:lang="x-default">{ }</data>
+    <online-flag>false</online-flag>
+    <online-flag site-id="RefArch">true</online-flag>
+    <searchable-flag>false</searchable-flag>
+    <searchable-flag site-id="RefArch">false</searchable-flag>
+    <page-attributes/>
+    <content-links>
+      <content-link content-id="76d2d89d73ca14600f82240024" type="page.dynamiclayout.main">
+        <position>0.0</position>
+      </content-link>
+    </content-links>
+    <sitemap-included-flag site-id="RefArch">false</sitemap-included-flag>
+  </content>
+  <content content-id="76d2d89d73ca14600f82240024">
+    <type>component.assets.custombanner</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <data xml:lang="x-default">{
+  "image" : {
+    "path" : "banner-component2.jpg",
+    "focal_point" : {
+      "x" : 0.57,
+      "y" : 0.51
+    },
+    "meta_data" : {
+      "height" : 200,
+      "width" : 561
+    }
+  },
+  "category" : "womens"
+}</data>
+    <online-flag>true</online-flag>
+    <online-flag site-id="RefArch">true</online-flag>
+    <page-attributes/>
+  </content>
 </library>

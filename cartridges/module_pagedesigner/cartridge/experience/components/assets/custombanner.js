@@ -4,6 +4,7 @@ var Template = require('dw/util/Template');
 var HashMap = require('dw/util/HashMap');
 var URLUtils = require('dw/web/URLUtils');
 var ImageTransformation = require('~/cartridge/experience/utilities/ImageTransformation.js');
+var ImageTransformationHelper = require('~/cartridge/scripts/helpers/ImageTransformationHelper.js');
 
 /**
  * Render logic for the assets.custombanner.
@@ -14,17 +15,9 @@ module.exports.render = function (context) {
     var category = content.category;
 
     if (content.image) {
-        model.image = {
-            src: {
-                mobile: ImageTransformation.url(content.image, { device: 'mobile' }),
-                desktop: ImageTransformation.url(content.image, { device: 'desktop' })
-            },
-            alt: content.image.file.getAlt(),
-            focalPointX: content.image.focalPoint.x * 100 + '%',
-            focalPointY: content.image.focalPoint.y * 100 + '%'
-        };
+    model.image = ImageTransformationHelper.getScaledImage(content.image);
     }
-
+    
     if (category) {
         model.url = URLUtils.url('Search-Show', 'cgid', category.ID);
     } else {
