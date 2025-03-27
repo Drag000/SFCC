@@ -1,0 +1,28 @@
+
+
+.wayfinder-photo-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: var(--focal-point-x, 50%) var(--focal-point-y, 50%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+.wayfinder-asset-title-text {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 8px;
+    color: #333;
+}
+
+
+.wayfinder-layout {
+    padding: 15px;
+}
