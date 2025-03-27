@@ -1,0 +1,15 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addJs('/js/productTile.js');
+        assets.addCss('/css/homePage.css');
+    </isscript>
+
+    <div class="photo-gallery-api"> 
+            <isloop items="${pdict.images}" var="image">
+                <div >
+                    <img src="${image.urls.small}" alt="${pdict.productName}" />
+                </div>
+            </isloop>    
+    </div>   
+</isdecorate>
