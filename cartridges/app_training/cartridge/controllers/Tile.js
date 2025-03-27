@@ -1,30 +1,30 @@
 'use strict';
 
 var server = require('server');
-var baseProductHelpers = require('*/cartridge/scripts/helpers/productHelpers');
+var discountHelpers = require('*/cartridge/scripts/helpers/discountHelpers');
 
 server.extend(module.superModule);
 
+
 /**
- * Appends a 'Show' route to the server that calculates and sets the discount percentage for a product.
- *
- * This function retrieves the product data from the response view data, calculates the discount
- * percentage based on the sales and list prices, and sets this discount percentage back into the
- * view data. The function then proceeds to the next middleware in the chain.
- *
- * @param {Object} req - The server request object.
- * @param {Object} res - The server response object, which contains view data.
- * @param {Function} next - The next middleware function in the server's request-response cycle.
- *
- * @returns {void} - This function does not return a value but modifies the response view data.
- */
+* Appends a 'Show' route to the server, calculating the discount percentage for a product
+* and setting it in the view data.
+*
+* @param {Object} req - The request object, representing the HTTP request.
+* @param {Object} res - The response object, used to send data back to the client.
+* @param {Function} next - The next middleware function in the stack.
+* 
+* @description This function retrieves the product data from the response view data,
+* calculates the discount percentage if both sales and list prices are available,
+* and updates the view data with the calculated discount percentage.
+*/
 server.append('Show', function (req, res, next) {
     var discountPercentage = null;
 
     var product = res.getViewData().product;
 
     if (product.price.sales && product.price.list) {
-        discountPercentage = baseProductHelpers.calculatePercentageOff(product.price.list.value, product.price.sales.value);
+        discountPercentage = discountHelpers.calculatePercentageOff(product.price.list.value, product.price.sales.value);
     }
 
     res.setViewData({ discountPercentage: discountPercentage });
