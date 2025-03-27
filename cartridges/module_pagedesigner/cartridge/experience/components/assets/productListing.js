@@ -5,9 +5,20 @@ var HashMap = require('dw/util/HashMap');
 var URLUtils = require('dw/web/URLUtils');
 var ProductSearchModel = require('dw/catalog/ProductSearchModel');
 
+
 /**
- * Render logic for the assets.productListing component.
- */
+* Renders a product listing component based on the provided context.
+*
+* This function generates a model containing a list of product IDs, which is then used to render
+* a product listing template. The products can be sourced either from a specified category or
+* directly from a list of product IDs provided in the context content.
+*
+* @param {Object} context - The context object containing content information for rendering.
+* @param {Object} context.content - The content object within the context.
+* @param {dw.catalog.Category} [context.content.category] - The category object from which products are to be listed.
+* @param {string} [context.content.productids] - A comma-separated string of product IDs to be listed if no category is specified.
+* @returns {string} The rendered HTML text of the product listing component.
+*/
 module.exports.render = function (context) {
     var model = new HashMap();
     var content = context.content;
