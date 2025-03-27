@@ -4,9 +4,14 @@ var Template = require('dw/util/Template');
 var HashMap = require('dw/util/HashMap');
 var PageRenderHelper = require('~/cartridge/experience/utilities/PageRenderHelper.js');
 
+
 /**
- * Render logic for the layouts.wayfinder.
- */
+* Renders the wayfinder layout component by preparing the model and invoking the template rendering.
+*
+* @param {Object} context - The context object containing information about the current rendering state.
+* @param {Object} context.component - The component object representing the current layout component.
+* @returns {string} The rendered HTML text of the wayfinder layout component.
+*/
 module.exports.render = function (context) {
     var model = new HashMap();
     var component = context.component;
