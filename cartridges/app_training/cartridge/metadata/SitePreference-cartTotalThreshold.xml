@@ -1,0 +1,12 @@
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <type-extension type-id="SitePreferences">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="cartTotalThreshold">
+                <type>double</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>200</default-value>
+            </attribute-definition>
+        </custom-attribute-definitions>
+    </type-extension>
+</metadata>
