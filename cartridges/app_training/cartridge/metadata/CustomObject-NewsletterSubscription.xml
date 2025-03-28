@@ -1,0 +1,28 @@
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+<custom-type type-id="NewsletterSubscription">
+        <staging-mode>no-staging</staging-mode>
+        <storage-scope>organization</storage-scope>
+        <key-definition attribute-id="email">
+            <type>string</type>
+            <min-length>0</min-length>
+        </key-definition>
+        <attribute-definitions>
+            <attribute-definition attribute-id="couponCode">
+                <display-name xml:lang="x-default">couponCode</display-name>
+                <description xml:lang="x-default">To store the assigned coupon code.</description>
+                <type>string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+        </attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Subscription Details">
+                <display-name xml:lang="x-default">Subscription Details</display-name>
+                <attribute attribute-id="couponCode"/>
+                <attribute attribute-id="email"/>
+            </attribute-group>
+        </group-definitions>
+    </custom-type>
+</metadata>
