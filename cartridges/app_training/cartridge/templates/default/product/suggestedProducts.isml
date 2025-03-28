@@ -1,0 +1,14 @@
+<isscript>
+        var assets = require('*/cartridge/scripts/assets');
+        assets.addJs('/js/search.js');
+</isscript>
+
+<isif condition="${pdict.productsInSameCategory && pdict.productsInSameCategory.length > 0}">
+    <div class="row-suggested-products">
+        <isloop items="${pdict.productsInSameCategory}" var="productID">
+            <div class="col-6 col-sm-4">
+                <isinclude url="${URLUtils.url('Tile-Show', 'pid', productID, 'swatches', true, 'ratings', true)}" />
+            </div>
+        </isloop>
+    </div>
+</isif>
