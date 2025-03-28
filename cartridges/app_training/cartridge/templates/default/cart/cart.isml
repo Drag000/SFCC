@@ -69,19 +69,19 @@
                     </isloop>
                     <isinclude template="cart/cartApproachingDiscount" />
                 
-                   <!--- Warninig message if total cart is more than cartTotalThreshold (default $200) --->
-                    
-                    <isif condition="${pdict.warninigMessage}">
-                        <div class="w-m">
-                            <p class="warning-message">${pdict.warninigMessage}</p>
-                        </div>
-                    <iselse>
-                        <div class="w-m hide-warning-message">
-                            <p class="warning-message"></p>
-                        </div>
-                    </isif>
+                   <!--- Warninig message if total cart is more than cartTotalThreshold (default $200) ---> 
+                    <div id="warning-message-container" threshold="${pdict.cartTotalThreshold}">
+                        <isif condition="${pdict.warninigMessage}">
+                            <div class="warning-message-section">
+                                <p class="warning-message">${pdict.warninigMessage}</p>
+                            </div>
+                        <iselse>
+                            <div class="warning-message-section hide-warning-message">
+                                <p class="warning-message"></p>
+                            </div>
+                        </isif>
+                    </div>
                 </div>
-                
                 <!---totals, and checkout actions--->
                 <div class="col-sm-5 col-md-4 totals">
                     <isinclude template="cart/cartPromoCode" />

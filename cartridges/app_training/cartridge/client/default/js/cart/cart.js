@@ -4,6 +4,7 @@ var base = require('../product/base');
 var focusHelper = require('../components/focus');
 var location = window.location;
 
+
 /**
  * appends params to a url
  * @param {string} url - Original url
@@ -71,15 +72,17 @@ function updateCartTotals(data) {
         'aria-label': data.resources.minicartCountOfItems,
         title: data.resources.minicartCountOfItems
     });
-
+    
+    var cartContainer = $('#warning-message-container');
+    var cartTotalThreshold = parseFloat(cartContainer.attr('threshold'));
     var grandTotal = parseFloat(data.totals.grandTotal.replace('$', ''));
 
-    if (grandTotal < 200) {
-        $('.w-m').addClass('hide-warning-message');
+    if (grandTotal < cartTotalThreshold) {
+        $('.warning-message-section').addClass('hide-warning-message');
     } else {
-        $('.w-m').removeClass('hide-warning-message');
+        $('.warning-message-section').removeClass('hide-warning-message');
         $('.warning-message').empty()
-        $('.warning-message').append('Your cart total exceeds $200');
+        $('.warning-message').append('Your cart total exceeds $' + cartTotalThreshold + '!');
     }
     
     if (data.totals.orderLevelDiscountTotal.value > 0) {

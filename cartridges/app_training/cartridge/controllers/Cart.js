@@ -1,11 +1,12 @@
 'use strict';
 
 var server = require('server');
+var BasketMgr = require('dw/order/BasketMgr');
+var Site = require('dw/system/Site');
+
 server.extend(module.superModule);
 
 server.append('Show', function (req, res, next) {
-    var BasketMgr = require('dw/order/BasketMgr');
-    var Site = require('dw/system/Site');
     var currentBasket = BasketMgr.getCurrentBasket();
     var warninigMessage;
 
@@ -16,7 +17,10 @@ server.append('Show', function (req, res, next) {
         warninigMessage = 'Your cart total exceeds $' + cartTotalThreshold + '!';
     }
 
-    res.setViewData({ warninigMessage: warninigMessage });
+    res.setViewData({ 
+        warninigMessage: warninigMessage,
+        cartTotalThreshold: cartTotalThreshold
+    });
 
     return next();
 });
