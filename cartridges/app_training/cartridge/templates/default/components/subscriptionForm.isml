@@ -3,64 +3,54 @@
     method="POST" 
     id="newsletterForm"
 >
-        <div class="form-group required">
-            <label class="form-control-label" for="subscribe-form-email">
-                ${Resource.msg('label.input.email', 'newsletter', null)}
-            </label>
-            <input type="email"
-                   id="subscribe-form-email"
-                   required
-                   aria-required="true"
-                   class="form-control required"
-                   aria-describedby="form-email-error"
-                   name="subscribeEmail"
-                   data-missing-error="${Resource.msg('error.message.required','newsletter',null)}"
-                   data-range-error="${Resource.msg('error.message.50orless','newsletter',null)}"
-                   data-pattern-mismatch="${Resource.msg('error.message.parse.email.profile.form','newsletter',null)}"
-                   value="${pdict.email}"
-            >
-            <div class="invalid-feedback" id="form-email-error"></div>
-        </div>
-
-        <div class="form-group required">
-            <label class="form-control-label" for="subscription-form-firstname">
-                ${Resource.msg('label.input.firstname', 'newsletter', null)}
-            </label>
-            <input type="text" 
-                   id="subscription-form-firstname" 
-                   required 
-                   aria-required="true" 
-                   class="form-control required" 
-                   aria-describedby="form-fname-error" 
-                   name="subscribeFormFirstname"
-                   data-missing-error="${Resource.msg('error.message.required','newsletter',null)}"
-                   data-range-error="${Resource.msg('error.message.50orless','newsletter',null)}"
-                   value="${pdict.firstName}"
-            >
-            <div class="invalid-feedback" id="form-fname-error"></div>
-        </div>
-
-        <div class="form-group required">
-            <label class="form-control-label" for="subscribe-form-lastname">
-                ${Resource.msg('label.input.lastname', 'newsletter', null)}
-            </label>
-            <input type="text"
-                   id="subscribe-form-lastname"
-                   required
-                   aria-required="true"
-                   class="form-control required"
-                   aria-describedby="form-lname-error"
-                   name="subscribeLastname"
-                   data-missing-error="${Resource.msg('error.message.required','newsletter',null)}"
-                   data-range-error="${Resource.msg('error.message.50orless','newsletter',null)}"
-                   value="${pdict.lastName}"
-            >
-            <div class="invalid-feedback" id="form-lname-error"></div>
-        </div>
-
-        <button type="submit" class="btn btn-block btn-primary">${Resource.msg('button.save', 'newsletter', null)}</button>
+    <div class="form-group <isif condition="${!!pdict.profileForm.email.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="subscribe-form-email">
+            ${Resource.msg('label.input.email', 'newsletter', null)}
+        </label>
+        <input type="email"
+               id="subscribe-form-email"
+               aria-required="true"
+               class="form-control required"
+               aria-describedby="form-email-error"
+               name="subscribeFormEmail"
+               data-missing-error="${Resource.msg('error.message.required','newsletter',null)}"
+               data-range-error="${Resource.msg('error.message.50orless','newsletter',null)}"
+               data-pattern-mismatch="${Resource.msg('error.message.parse.email.profile.form','newsletter',null)}"
+               <isprint value=${pdict.profileForm.email.attributes} encoding="off" />
+        >   
+        <div class="invalid-feedback" id="form-email-error"></div>
+    </div>
+    <div class="form-group <isif condition="${!!pdict.profileForm.firstname.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="subscription-form-firstname">
+            ${Resource.msg('label.input.firstname', 'newsletter', null)}
+        </label>
+        <input type="text" 
+               id="subscription-form-firstname" 
+               aria-required="true" 
+               class="form-control required" 
+               aria-describedby="form-fname-error" 
+               name="subscribeFormFirstname"
+               data-missing-error="${Resource.msg('error.message.required','newsletter',null)}"
+               data-range-error="${Resource.msg('error.message.50orless','newsletter',null)}"
+               <isprint value=${pdict.profileForm.firstname.attributes} encoding="off" />
+        >
+        <div class="invalid-feedback" id="form-fname-error"></div>
+    </div>
+    <div class="form-group <isif condition="${!!pdict.profileForm.lastname.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="subscribe-form-lastname">
+            ${Resource.msg('label.input.lastname', 'newsletter', null)}
+        </label>
+        <input type="text"
+               id="subscribe-form-lastname"
+               aria-required="true"
+               class="form-control required"
+               aria-describedby="form-lname-error"
+               name="subscribeFormLastname"
+               data-missing-error="${Resource.msg('error.message.required','newsletter',null)}"
+               data-range-error="${Resource.msg('error.message.50orless','newsletter',null)}"
+               <isprint value=${pdict.profileForm.lastname.attributes} encoding="off" />v
+        >
+        <div class="invalid-feedback" id="form-lname-error"></div>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">${Resource.msg('button.save', 'newsletter', null)}</button>
 </form>
-
-<iscomment> value="${pdict.form.email.value}" </iscomment>
-<iscomment> value="${pdict.firstName}" </iscomment>
-<iscomment> value="${pdict.form.lastname.value}" </iscomment>

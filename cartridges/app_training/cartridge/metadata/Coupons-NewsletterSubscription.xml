@@ -14,7 +14,7 @@
             <allow-multiple-codes-per-order>false</allow-multiple-codes-per-order>
         </redemption-limits>
         <system-codes>
-            <max-number-of-codes>12</max-number-of-codes>
+            <max-number-of-codes>33</max-number-of-codes>
             <code-length>16</code-length>
             <include-vowels>true</include-vowels>
             <include-dashes>true</include-dashes>
