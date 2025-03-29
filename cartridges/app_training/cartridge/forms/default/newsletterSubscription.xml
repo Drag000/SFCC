@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19">
+    <!-- <group formid="newsletterSubscription"> -->
+        <field 
+            formid="firstname" 
+            mandatory="true"
+            max-length="50"
+            missing-error="error.message.required" 
+            range-error="error.message.50orless" 
+            type="string" />
+
+        <field 
+            formid="lastname" 
+            mandatory="true" 
+            max-length="50" 
+            missing-error="error.message.required"
+            range-error="error.message.50orless" 
+            type="string" />
+
+        <field
+            formid="email"
+            mandatory="true" 
+            max-length="50" 
+            missing-error="error.message.required"
+            parse-error="error.message.parse.email"
+            range-error="error.message.50orless"
+            regexp="^[\w.%+-]+@[\w.-]+\.\w{2,}$" 
+            value-error="error.message.invalid.email"
+            type="string"/> 
+    <!-- </group> -->
+</form>

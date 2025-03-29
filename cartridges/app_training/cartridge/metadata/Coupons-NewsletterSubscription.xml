@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coupons xmlns="http://www.demandware.com/xml/impex/coupon/2008-06-17">
+    <coupon coupon-id="NewsletterSubscription">
+        <description>$20 off to each order</description>
+        <enabled-flag>true</enabled-flag>
+        <case-insensitive>true</case-insensitive>
+        <redemption-limits>
+            <limit-per-code>1</limit-per-code>
+            <limit-per-customer>1</limit-per-customer>
+            <limit-per-time-frame>
+                <limit>1</limit>
+                <time-frame>90</time-frame>
+            </limit-per-time-frame>
+            <allow-multiple-codes-per-order>false</allow-multiple-codes-per-order>
+        </redemption-limits>
+        <system-codes>
+            <max-number-of-codes>33</max-number-of-codes>
+            <code-length>16</code-length>
+            <include-vowels>true</include-vowels>
+            <include-dashes>true</include-dashes>
+            <algorithm>F2</algorithm>
+        </system-codes>
+    </coupon>
+
+</coupons>
