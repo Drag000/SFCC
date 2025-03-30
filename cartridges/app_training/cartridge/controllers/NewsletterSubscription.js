@@ -10,14 +10,25 @@ var newsletterEmailHelpers = require('*/cartridge/scripts/helpers/newsletterEmai
 var Site = require('dw/system/Site');
 var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
 
-
-server.get('Show', server.middleware.https, csrfProtection.generateToken, function (req, res, next) {
+/**
+* Handles the 'Show' route for displaying the newsletter subscription page.
+*
+* This function retrieves the target URL from the request query string or defaults to 1 if not provided.
+* It constructs the URL for the newsletter subscription using the 'NewsletterSubscription-Subscribe' endpoint
+* and the target URL. It then clears the profile form and renders the 'newsletterSubscription' template with
+* the subscription URL and the cleared profile form.
+*
+* @param {Object} req - The server request object containing the query string parameters.
+* @param {Object} res - The server response object used to render the template.
+* @param {Function} next - The callback function to pass control to the next middleware.
+*/
+server.get('Show', function (req, res, next) {
     var target = req.querystring.rurl || 1;
     var subscribeNewsletterUrl = URLUtils.url('NewsletterSubscription-Subscribe', 'rurl', target).relative().toString();
-    
+
     var profileForm = server.forms.getForm('profile');
     profileForm.clear();
-            
+
     res.render('newsletterSubscription', {
         subscribeNewsletterUrl: subscribeNewsletterUrl,
         profileForm: profileForm
@@ -25,86 +36,62 @@ server.get('Show', server.middleware.https, csrfProtection.generateToken, functi
     next();
 });
 
-
 /**
-* Handles the subscription to a newsletter by processing the user's email and name, 
-* checking for existing subscriptions, and assigning a coupon code if available.
-* 
-* @function
-* @param {Object} req - The server request object containing form data.
-* @param {Object} res - The server response object used to render views or redirect.
-* @param {Function} next - The next middleware function in the stack.
-* 
-* @returns {void}
-* 
-* @throws Will render an error message if there is an issue with the subscription process.
-* 
-* @description This function is triggered by a POST request to the 'Subscribe' endpoint. 
-* It retrieves the user's email, first name, and last name from the request form. 
-* It checks if the email is already subscribed by querying the 'NewsletterSubscription' custom object. 
-* If the email is already subscribed, it renders an error message. 
-* If not, it attempts to retrieve a coupon code from the 'NewsletterSubscription' coupon manager. 
-* If a coupon code is available, it creates a new custom object for the subscription, 
-* assigns the email and coupon code to it, and sends a notification email with the coupon code. 
-* If no coupon code is available, it sends a notification email without a coupon code. 
-* In both cases, it redirects the user to the home page. 
-* If an error occurs during the process, it catches the exception and renders an error message.
+* Handles the subscription to the newsletter via a POST request. This function processes the form data,
+* checks for existing subscriptions, and creates a new subscription if valid. It also sends a notification
+* email and returns a JSON response indicating the success or failure of the operation.
+*
+* @param {Object} req - The server request object containing form data and other request information.
+* @param {Object} res - The server response object used to send back the desired HTTP response.
+* @param {Function} next - The callback function to pass control to the next middleware.
+* @returns {void} - Returns a JSON response with the subscription status and any errors if applicable.
 */
-server.post('Subscribe', server.middleware.https, csrfProtection.validateAjaxRequest, function (req, res, next) {
+server.post('Subscribe', function (req, res, next) {
     var profileForm = server.forms.getForm('profile');
     var formErrors = require('*/cartridge/scripts/formErrors');
-    
+
     var email = profileForm.customer.email.value;
     var firstName = profileForm.customer.firstname.value;
     var lastName = profileForm.customer.lastname.value;
 
+    //Check if the email is already subscribed
+    var existingSubscription = CustomObjectMgr.getCustomObject('NewsletterSubscription', email);
+    if (existingSubscription) {
+        res.json({
+            success: false,
+            error: [Resource.msg('error.message.already.subscribed', 'newsletter', null)]
+        });
+        return next();
+    }
+
     if (profileForm.valid) {
+        var couponCode;
         Transaction.wrap(function () {
-            var existingSubscription = CustomObjectMgr.getCustomObject('NewsletterSubscription', email);
-            if (existingSubscription) {
-                
-                // res.json({
-                //     success: false,
-                //     // redirectUrl: URLUtils.url('Home-Show').toString(),
-                //     error: {
-                //         subscribeEmail: Resource.msg('error.message.already.subscribed', 'newsletter', null)
-                //     }
-                // });
-                
-                // profileForm.valid = false;
-                profileForm.customer.email.valid = false;
-                profileForm.customer.email.error = Resource.msg('error.message.already.subscribed', 'newsletter', null);
-                
-                res.json({
-                    success: false,
-                    fields: formErrors.getFormErrors(profileForm)
-                });
-                
-                return false;
-            }
-            
             var coupon = CouponMgr.getCoupon('NewsletterSubscription');
-            var couponCode = coupon.getNextCouponCode();
-            
+            if (coupon) {
+                couponCode = coupon.getNextCouponCode();
+            }
+
             var customObject = CustomObjectMgr.createCustomObject('NewsletterSubscription', email);
             customObject.custom.email = email;
-            customObject.custom.couponCode = couponCode;
+            if (couponCode) {
+                customObject.custom.couponCode = couponCode;
+            }
+        });
 
-            newsletterEmailHelpers.sendNewsletterEmailNotification(email, firstName, lastName, couponCode);
+        newsletterEmailHelpers.sendNewsletterEmailNotification(email, firstName, lastName, couponCode);
 
-            res.json({ 
+        res.json({
             success: true,
             redirectUrl: URLUtils.url('Home-Show').toString(),
-            });
-            
         });
+
     } else {
         res.json({
-            // success: false,
             fields: formErrors.getFormErrors(profileForm)
         });
     }
-    
+
     return next();
 });
 

@@ -7,6 +7,13 @@ module.exports = {
 
     subscibe: function () {
         $('.submit-newsletter-confirmation-btn').click(function (e) {
+            // Check if the alert message exists and remove it
+            var alertMessage = $('#newsletterForm').find('.alert.alert-danger');
+            if (alertMessage.length > 0) {
+                alertMessage.remove();
+            }
+            
+            // Submit the form
             $('#newsletterForm').submit();
         });
     
@@ -48,9 +55,6 @@ module.exports = {
             $(this).attr('aria-hidden', 'true');
         });
         },
-
-    
-    
 };
 
 
