@@ -2,12 +2,18 @@
 
 var server = require('server');
 var productSearchService = require('*/cartridge/scripts/services/ProductSearchService');
-var cache = require('*/cartridge/scripts/middleware/cache');
-var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
-var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
 
-server.get('Show', cache.applyPromotionSensitiveCache, consentTracking.consent, function (req, res, next) {
-    var result = productSearchService.call();
+server.get('Show', function (req, res, next) {
+    var params = {
+        endpoint: 'product_search',
+        query: 'Sony',
+        refine: 'cgid=electronics',
+        count: 20,
+        clientId: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    };
+    
+    var result = productSearchService.call(params);
+    
     var productIDs = [];
     var SearchHits = result.object.hits
     
@@ -23,6 +29,6 @@ server.get('Show', cache.applyPromotionSensitiveCache, consentTracking.consent, 
         res.json({ error: 'Failed to retrieve products' });
     }
     return next();
-}, pageMetaData.computedPageMetaData);
+});
 
 module.exports = server.exports();
