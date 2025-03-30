@@ -3,6 +3,17 @@
 var server = require('server');
 var productSearchService = require('*/cartridge/scripts/services/ProductSearchService');
 
+/**
+* Handles the 'Show' route for product search functionality.
+* This function performs a product search using specified parameters and renders the results.
+* If the search is successful, it renders the product IDs in the 'productsearch/results' template.
+* If the search fails, it responds with a 500 status code and an error message.
+*
+* @param {Object} req - The request object representing the HTTP request.
+* @param {Object} res - The response object used to send back the desired HTTP response.
+* @param {Function} next - The next middleware function in the stack.
+* @returns {Function} - Calls the next middleware function in the stack.
+*/
 server.get('Show', function (req, res, next) {
     var params = {
         endpoint: 'product_search',

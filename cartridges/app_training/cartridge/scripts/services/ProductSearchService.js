@@ -1,6 +1,29 @@
 var LocalServiceRegistry = require('dw/svc/LocalServiceRegistry');
 var Logger = require('dw/system/Logger');
 
+/**
+* Service configuration for the product search functionality using OCAPI.
+* This service is responsible for creating and sending a GET request to the product search endpoint,
+* parsing the response, and providing a mock response for testing purposes.
+* 
+* @type {Object}
+* @property {Function} createRequest - Configures the service request with method, headers, and URL.
+* @property {Function} parseResponse - Parses the JSON response from the service.
+* @property {Function} mockCall - Provides a mock response for testing the service without actual API calls.
+* @property {Function} filterLogMessage - Filters log messages for this service.
+* 
+* @example
+* var params = {
+*     query: 'Sony',
+*     refine: 'cgid=electronics',
+*     count: 1,
+*     clientId: 'your-client-id',
+*     endpoint: '/product_search'
+* };
+* var response = productSearchService.call(params);
+* 
+* @returns {Object} The service response object containing the product search results.
+*/
 var productSearchService = LocalServiceRegistry.createService('app_ocapi.http.productsearch', {
     createRequest: function (svc, params) {
         svc.setRequestMethod('GET');
