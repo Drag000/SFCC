@@ -24,9 +24,8 @@ server.append('Show', function (req, res, next) {
     var currentBasket = BasketMgr.getCurrentBasket();
     var warninigMessage;
     
-    var cartTotal = currentBasket.totalGrossPrice.value;
-    if (cartTotal) {
-        
+    if (currentBasket && currentBasket.totalGrossPrice) {
+        var cartTotal = currentBasket.totalGrossPrice.value;
         var cartTotalThreshold = Site.getCurrent().getCustomPreferenceValue('cartTotalThreshold');
     
         if (cartTotal > cartTotalThreshold) {
