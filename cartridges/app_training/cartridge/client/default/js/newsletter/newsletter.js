@@ -1,7 +1,7 @@
 'use strict';
 
-var formValidation = require('../components/formValidation');
-var createErrorNotification = require('../components/errorNotification');
+var formValidation = require('../../../../../../app_storefront_base/cartridge/client/default/js/components/formValidation');
+var createErrorNotification = require('../../../../../../app_storefront_base/cartridge/client/default/js/components/errorNotification.js');
 
 module.exports = {
 
