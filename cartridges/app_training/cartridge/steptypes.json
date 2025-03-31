@@ -1,0 +1,20 @@
+{
+    "AssignProductsToCategory": {
+        "script": "/app_training/cartridge/scripts/jobs/AssignProductsToCategory.js",
+        "description": "Assign products with a specific brand to a category",
+        "parameters": [
+            {
+                "name": "brandName",
+                "type": "string",
+                "description": "The brand name of the products to be assigned",
+                "required": true
+            },
+            {
+                "name": "categoryID",
+                "type": "string",
+                "description": "The ID of the category to assign the products to",
+                "required": true
+            }
+        ]
+    }
+}
