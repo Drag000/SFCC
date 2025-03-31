@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<library xmlns="http://www.demandware.com/xml/impex/library/2006-10-31" library-id="RefArchSharedLibrary">
+  <content content-id="wayfinder-page">
+    <display-name xml:lang="x-default">wayfinder-page</display-name>
+    <type>page.dynamiclayout</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <visibility-mode xml:lang="x-default">visible</visibility-mode>
+    <data xml:lang="x-default">{ }</data>
+    <online-flag>false</online-flag>
+    <online-flag site-id="RefArch">true</online-flag>
+    <searchable-flag>false</searchable-flag>
+    <searchable-flag site-id="RefArch">false</searchable-flag>
+    <page-attributes/>
+    <content-links>
+      <content-link content-id="4f78ba774895cc61e569c0869e" type="page.dynamiclayout.main">
+        <position>0.0</position>
+      </content-link>
+    </content-links>
+    <sitemap-included-flag site-id="RefArch">false</sitemap-included-flag>
+  </content>
+  <content content-id="4f78ba774895cc61e569c0869e">
+    <type>component.layouts.wayfinderLayout</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <data xml:lang="x-default">{ }</data>
+    <online-flag>true</online-flag>
+    <online-flag site-id="RefArch">true</online-flag>
+    <page-attributes/>
+    <content-links>
+      <content-link content-id="315a7f75695010064f46d23c27" type="component.layouts.wayfinderLayout.column4">
+        <position>0.0</position>
+      </content-link>
+      <content-link content-id="1c522535f503a4be9f941ec30d" type="component.layouts.wayfinderLayout.column3">
+        <position>0.0</position>
+      </content-link>
+      <content-link content-id="cf6429f1d788163c811809a30e" type="component.layouts.wayfinderLayout.column2">
+        <position>0.0</position>
+      </content-link>
+      <content-link content-id="f594bb2a9c3a1568ff13c79e6a" type="component.layouts.wayfinderLayout.column1">
+        <position>0.0</position>
+      </content-link>
+    </content-links>
+  </content>
+  <content content-id="1c522535f503a4be9f941ec30d">
+    <type>component.assets.wayfinderAsset</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <data xml:lang="x-default">{
+  "image" : {
+    "path" : "womennn.jpg",
+    "focal_point" : {
+      "x" : 0.5,
+      "y" : 0.5
+    },
+    "meta_data" : {
+      "height" : 800,
+      "width" : 800
+    }
+  },
+  "category" : "womens",
+  "title" : "Womens"
+}</data>
+    <online-flag>true</online-flag>
+    <online-flag site-id="RefArch">true</online-flag>
+    <page-attributes/>
+  </content>
+  <content content-id="315a7f75695010064f46d23c27">
+    <type>component.assets.wayfinderAsset</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <data xml:lang="x-default">{
+  "image" : {
+    "path" : "electronicsss.jpg",
+    "focal_point" : {
+      "x" : 0.5,
+      "y" : 0.5
+    },
+    "meta_data" : {
+      "height" : 350,
+      "width" : 350
+    }
+  },
+  "category" : "electronics",
+  "title" : "Electronics"
+}</data>
+    <online-flag>true</online-flag>
+    <online-flag site-id="RefArch">true</online-flag>
+    <page-attributes/>
+  </content>
+  <content content-id="cf6429f1d788163c811809a30e">
+    <type>component.assets.wayfinderAsset</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <data xml:lang="x-default">{
+  "image" : {
+    "path" : "mannn.jpg",
+    "focal_point" : {
+      "x" : 0.5,
+      "y" : 0.5
+    },
+    "meta_data" : {
+      "height" : 800,
+      "width" : 800
+    }
+  },
+  "category" : "mens",
+  "title" : "Mens"
+}</data>
+    <online-flag>true</online-flag>
+    <online-flag site-id="RefArch">true</online-flag>
+    <page-attributes/>
+  </content>
+  <content content-id="f594bb2a9c3a1568ff13c79e6a">
+    <type>component.assets.wayfinderAsset</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <data xml:lang="x-default">{
+  "image" : {
+    "path" : "TEST.jpg",
+    "focal_point" : {
+      "x" : 0.5,
+      "y" : 0.5
+    },
+    "meta_data" : {
+      "height" : 800,
+      "width" : 800
+    }
+  },
+  "category" : "newarrivals",
+  "title" : "New Arrivals"
+}</data>
+    <online-flag>true</online-flag>
+    <online-flag site-id="RefArch">true</online-flag>
+    <page-attributes/>
+  </content>
+</library>
