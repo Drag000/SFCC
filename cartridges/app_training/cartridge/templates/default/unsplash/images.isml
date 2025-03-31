@@ -1,0 +1,9 @@
+<isdecorate template="common/layout/page">
+    <div class="photo-gallery-api"> 
+        <isloop items="${pdict.images}" var="image">
+            <div >
+                <img src="${image.urls.small}" alt="${pdict.productName}" />
+            </div>
+        </isloop>    
+    </div>   
+</isdecorate>
