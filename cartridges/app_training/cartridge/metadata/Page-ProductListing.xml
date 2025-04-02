@@ -1,0 +1,28 @@
+<library xmlns="http://www.demandware.com/xml/impex/library/2006-10-31" library-id="RefArchSharedLibrary">
+    <content content-id="product-listing">
+        <display-name xml:lang="x-default">product-listing</display-name>
+        <type>page.dynamiclayout</type>
+        <config>{ "visibility" : [ ] }</config>
+        <visibility-mode xml:lang="x-default">visible</visibility-mode>
+        <data xml:lang="x-default">{ }</data>
+        <online-flag>false</online-flag>
+        <online-flag site-id="RefArch">true</online-flag>
+        <searchable-flag>false</searchable-flag>
+        <searchable-flag site-id="RefArch">false</searchable-flag>
+        <page-attributes/>
+        <content-links>
+            <content-link content-id="dafbdc67476db0471a5901c820" type="page.dynamiclayout.main">
+                <position>0.0</position>
+            </content-link>
+        </content-links>
+        <sitemap-included-flag site-id="RefArch">false</sitemap-included-flag>
+    </content>
+    <content content-id="dafbdc67476db0471a5901c820">
+        <type>component.assets.productListing</type>
+        <config>{ "visibility" : [ ] }</config>
+        <data xml:lang="x-default">{ "productids" : "25686514M, 25686544M\n\n", "category" : null }</data>
+        <online-flag>true</online-flag>
+        <online-flag site-id="RefArch">true</online-flag>
+        <page-attributes/>
+    </content>
+</library>
